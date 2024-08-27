@@ -1,0 +1,51 @@
+doctype html
+html
+	head 
+		title=	'MatchDB' 
+	body 
+		h2= 'Home Team'
+		div 
+			span= 'totalAverageGoals '
+			span= message.homeTeam.totalAverageGoals
+		hr 
+		div 
+			each item in message.homeTeam.mostGoalsHome
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
+		div 
+			each item in message.homeTeam.mostGoalsAway
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
+		div 
+			each item in message.homeTeam.averageGoals
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
+		h2= 'Away Team'
+		div 
+			span= 'totalAverageGoals '
+			span= message.awayTeam.totalAverageGoals
+		hr 
+		div 
+			each item in message.awayTeam.mostGoalsHome
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
+		div 
+			each item in message.awayTeam.mostGoalsAway
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
+		div 
+			each item in message.awayTeam.averageGoals
+				div
+					each val, key in item 
+						span= `${key}: ${val}` 
+		hr
