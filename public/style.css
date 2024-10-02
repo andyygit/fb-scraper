@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.grid-wrapper {
+  width: max-content;
+  font-size: 0.8125em;
+  margin-bottom: 2em;
+}
+.grid-container {
+  display: grid;
+  column-gap: 15px;
+  margin-bottom: 5px;
+}
+.totalAverageGoals {
+  grid-template-columns: repeat(3, 1fr);
+}
+.title,
+.totalAverageGoals div:nth-child(2),
+.averageGoals div:nth-child(4),
+.averageGoals div:nth-child(5),
+.match-details div:nth-child(4) {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+.averageGoals {
+  grid-template-columns: repeat(3, 1fr);
+}
+.averageGoals div:nth-child(4) {
+  grid-column: 2;
+}
+.mostGoalsHome,
+.mostGoalsAway {
+  grid-template-columns: repeat(2, 1fr);
+}
+.match-details {
+  display: flex;
+  gap: 10px;
+}

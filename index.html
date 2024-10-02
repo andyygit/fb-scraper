@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      .grid-wrapper {
+        width: max-content;
+        font-size: 0.8125em;
+        margin-bottom: 2em;
+      }
+      .grid-container {
+        display: grid;
+        margin-bottom: 5px;
+      }
+      .totalAverageGoals {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .title,
+      .totalAverageGoals div:nth-child(2),
+      .averageGoals div:nth-child(4),
+      .averageGoals div:nth-child(5),
+      .match-details div:nth-child(4) {
+        font-size: 1.1em;
+        font-weight: 700;
+      }
+      .averageGoals {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .averageGoals div:nth-child(4) {
+        grid-column: 2;
+      }
+      .mostGoalsHome,
+      .mostGoalsAway {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .match-details {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-wrapper">
+      <div class="title">Galatasaray</div>
+      <hr />
+      <div class="grid-container totalAverageGoals">
+        <div>Medie totala goluri / meci:</div>
+        <div>3.56</div>
+      </div>
+      <div class="grid-container averageGoals">
+        <div>Inscrie in medie:</div>
+        <div>Acasa</div>
+        <div>Deplasare</div>
+        <div>2.04545454545455</div>
+        <div>2.04545454545455</div>
+      </div>
+      <div class="grid-container mostGoalsHome">
+        <div>Cele mai multe goluri marcate acasa:</div>
+        <div class="match-details">
+          <div>1714867200</div>
+          <div>Super Lig (Turcia)</div>
+          <div>Galatasaray</div>
+          <div>6 - 1</div>
+          <div>Sivasspor</div>
+        </div>
+      </div>
+      <div class="grid-container mostGoalsAway">
+        <div>Cele mai multe goluri marcate in deplasare:</div>
+        <div class="match-details">
+          <div>1714867200</div>
+          <div>Super Lig (Turcia)</div>
+          <div>Galatasaray</div>
+          <div>6 - 1</div>
+          <div>Sivasspor</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -9,6 +9,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res, next) => {
@@ -20,7 +21,7 @@ app.get('/', (req, res, next) => {
     }
     console.log('Connected to database');
     db.serialize(() => {
-      let returnedData = { homeTeam: {}, awayTeam: {} };
+      let returnedData = { teams: [homeTeam, awayTeam], homeTeam: {}, awayTeam: {} };
       /////////////////////hometeam//////////////////////////////////
       db.get('SELECT avg(homeScore + awayScore) as "totalAverageGoals" FROM homeTeam', (err, row) => {
         if (err) {
@@ -49,7 +50,7 @@ app.get('/', (req, res, next) => {
         }
       );
       db.all(
-        'SELECT "homeAverageGoals" as "averageGoals", avg(homeScore) as "qty" FROM homeTeam WHERE home = $homeTeam UNION SELECT "awayAverageGoals", avg(awayScore) FROM homeTeam WHERE away = $homeTeam',
+        'SELECT "homeAverageGoals" as "averageGoals", round(avg(homeScore),2) as "qty" FROM homeTeam WHERE home = $homeTeam UNION SELECT "awayAverageGoals", round(avg(awayScore),2) FROM homeTeam WHERE away = $homeTeam',
         { $homeTeam: homeTeam },
         (err, rows) => {
           if (err) {
@@ -87,7 +88,7 @@ app.get('/', (req, res, next) => {
         }
       );
       db.all(
-        'SELECT "homeAverageGoals" as "averageGoals", avg(homeScore) as "qty" FROM awayTeam WHERE home = $awayTeam UNION SELECT "awayAverageGoals", avg(awayScore) FROM awayTeam WHERE away = $awayTeam',
+        'SELECT "homeAverageGoals" as "averageGoals", round(avg(homeScore),2) as "qty" FROM awayTeam WHERE home = $awayTeam UNION SELECT "awayAverageGoals", round(avg(awayScore),2) FROM awayTeam WHERE away = $awayTeam',
         { $awayTeam: awayTeam },
         (err, rows) => {
           if (err) {

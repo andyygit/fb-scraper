@@ -1,51 +1,86 @@
 doctype html
 html
 	head 
-		title=	'MatchDB' 
+		title=	`${message.teams[0]} vs ${message.teams[1]}`
+		link(rel='stylesheet', href='/style.css')
 	body 
-		h2= 'Home Team'
-		div 
-			span= 'totalAverageGoals '
-			span= message.homeTeam.totalAverageGoals
-		hr 
-		div 
-			each item in message.homeTeam.mostGoalsHome
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
+	div(class="grid-wrapper")
+		div(class="title")= `${message.teams[0]}`
 		hr
-		div 
-			each item in message.homeTeam.mostGoalsAway
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
-		hr
-		div 
+		div(class="grid-container totalAverageGoals")
+			div Medie totala goluri / meci:
+			div= `${message.homeTeam.totalAverageGoals}`
+		div(class="grid-container averageGoals")
+			div Inscrie in medie:
 			each item in message.homeTeam.averageGoals
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
-		hr
-		h2= 'Away Team'
-		div 
-			span= 'totalAverageGoals '
-			span= message.awayTeam.totalAverageGoals
-		hr 
-		div 
-			each item in message.awayTeam.mostGoalsHome
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
-		hr
-		div 
-			each item in message.awayTeam.mostGoalsAway
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
-		hr
-		div 
-			each item in message.awayTeam.averageGoals
-				div
-					each val, key in item 
-						span= `${key}: ${val}` 
-		hr
+				div= `${item.averageGoals == 'awayAverageGoals' ? 'Deplasare' : 'Acasa'}`
+			each item in message.homeTeam.averageGoals
+				div= item.qty
+		div(class="grid-container mostGoalsHome")
+			div Cele mai multe goluri marcate acasa:
+			div
+				each match in message.homeTeam.mostGoalsHome
+					div(class="match-details")
+						each val, key in match 
+							div= val
+		div(class="grid-container mostGoalsAway")
+			div Cele mai multe goluri marcate in deplasare:
+			div
+				each match in message.homeTeam.mostGoalsAway
+					div(class="match-details")
+						each val, key in match 
+							div= val
+
+
+
+
+			//- 	each val, key in item
+			//- 		div= val
+			//- 		div= val
+	
+		//- h2= message.teams[0]
+		//- div 
+		//- 	span= 'totalAverageGoals '
+		//- 	span= message.homeTeam.totalAverageGoals
+		//- hr 
+		//- div 
+		//- 	each item in message.homeTeam.mostGoalsHome
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr
+		//- div 
+		//- 	each item in message.homeTeam.mostGoalsAway
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr
+		//- div 
+		//- 	each item in message.homeTeam.averageGoals
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr
+		//- h2= message.teams[1]
+		//- div 
+		//- 	span= 'totalAverageGoals '
+		//- 	span= message.awayTeam.totalAverageGoals
+		//- hr 
+		//- div 
+		//- 	each item in message.awayTeam.mostGoalsHome
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr
+		//- div 
+		//- 	each item in message.awayTeam.mostGoalsAway
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr
+		//- div 
+		//- 	each item in message.awayTeam.averageGoals
+		//- 		div
+		//- 			each val, key in item 
+		//- 				span= `${key}: ${val}` 
+		//- hr

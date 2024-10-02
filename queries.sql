@@ -5,4 +5,4 @@
 -- cele mai multe goluri in deplasare
 -- SELECT * FROM homeTeam WHERE away = 'Galatasaray' AND awayScore = (SELECT max(awayScore) FROM homeTeam WHERE away = 'Galatasaray')
 -- goluri marcate in medie acasa si in deplasare
--- SELECT 'homeAverageGoals' as 'averageGoals', avg(homeScore) as 'qty' FROM homeTeam WHERE home = 'Galatasaray' UNION SELECT 'awayAverageGoals', avg(awayScore) FROM homeTeam WHERE away = 'Galatasaray'
+-- SELECT 'homeAverageGoals' as 'averageGoals', round(avg(homeScore),2) as 'qty' FROM homeTeam WHERE home = 'Galatasaray' UNION SELECT 'awayAverageGoals', round(avg(awayScore),2) FROM homeTeam WHERE away = 'Galatasaray'
